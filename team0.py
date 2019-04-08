@@ -1,14 +1,17 @@
 ####
 # Each team's file must define four tokens:
-#     team_name: a string
-#     strategy_name: a string
-#     strategy_description: a string
+#     team_name: Kira
+#     strategy_name: Reputation
+#     strategy_description: Reputation system. "Fool me once shame on me. Fool me twice, I shank you." This is ment to punish those who only backstab. When back stabbed enough there is no return.
 #     move: A function that returns 'c' or 'b'
 ####
 
 team_name = 'The name the team gives to itself' # Only 10 chars displayed.
 strategy_name = 'The name the team gives to this strategy'
 strategy_description = 'How does this strategy decide?'
+    
+X = 0
+Y = 0
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -17,7 +20,8 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-
+    global X
+    global Y
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
     # The first round between these two players is my_history[0] and their_history[0].
@@ -25,8 +29,29 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
+    if Y == 4:
+        return 'b'
+    else:
+        if their_history[-1] == 'b' and X <= 1:
+            return 'c'
+            X += 1
+        elif their_history[-1] == 'b' X >= 2:
+            return 'b'
+            X += 2:
+        elif their_history[-1] == 'c' and X >= 2:
+            return 'c'
+            X -= 1:
+        else:
+            return 'c'
+        if X >= 2 and Y < 3:
+            Y += 1
+        else:
+            y += 0
     
-    return 'c'
+            
+        
+        
+
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
